@@ -1,6 +1,10 @@
 using UnityEngine;
 
-public class IStunnable
+public interface IStunnable
 {
-    
+    bool IsStunned { get; }
+    float StunDuration { get; }
+
+    void Stun();
+    void ClearStun();
 }

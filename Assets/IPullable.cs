@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IPullable
+public interface IPullable
 {
-    
+    void Pull();
 }

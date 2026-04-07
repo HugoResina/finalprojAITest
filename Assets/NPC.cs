@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Entity : IHurtable
+public abstract class NPC : MonoBehaviour, IHurtable
 {
     public float Health { get => _health; }
 
