@@ -1,21 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class SimpleEnemy : NPC, IParryable, IPullable, IStunnable
 {
-    public float Health { get => _health; }
-
-    [SerializeField] private float _health = 10;
-
-    public float Damage { get => _damage; }
-
-    [SerializeField] private float _damage = 1;
-    public float AttackCooldown { get => _attackCooldown; }
-
-    [SerializeField] private float _attackCooldown = 1;
-    public float AttackSpeed { get => _attackSpeed; }
-
-    [SerializeField] private float _attackSpeed = 1;
 
     public Vector3 AttackLocalDirection { get => _attackLocalDirection; }
 
@@ -29,21 +17,18 @@ public abstract class SimpleEnemy : NPC, IParryable, IPullable, IStunnable
 
     [SerializeField] private float _stunDuration;
 
+    [SerializeField] private NodeSO Root, CurrentState;
+
+    public NodeSO _root { get =>  _root; }
+    public NodeSO _currentState { get => _currentState; }
+
+    [HideInInspector] public NavMeshAgent agent;
+    public Transform target;
 
 
-    public void Die()
-    {
-        Debug.Log("Entity Dies");
-    }
 
-    public void TakeDamage(float damage)
-    {
-        Debug.Log("Entity Takes " + damage + " damage");
-    }
-    public void Attack()
-    {
-        Debug.Log("Entity Attacks with " + _damage + " damage");
-    }
+
+
 
     public void Parry()
     {
