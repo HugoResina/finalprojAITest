@@ -4,5 +4,5 @@ using UnityEngine;
 public class StunStateSO : NodeSO
 {
     public override bool StateCondition(EnemyBehaviour eb)
-    => eb.is && !eb.isDead;
+    => eb.isStunned && !eb.isDead;
 }

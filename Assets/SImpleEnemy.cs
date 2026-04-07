@@ -5,58 +5,42 @@ using UnityEngine.AI;
 public abstract class SimpleEnemy : NPC, IParryable, IPullable, IStunnable
 {
 
-    public Vector3 AttackLocalDirection { get => _attackLocalDirection; }
+    public abstract Vector3 AttackLocalDirection { get; set; }
 
-    [SerializeField] private Vector3 _attackLocalDirection;
+    //[SerializeField] private Vector3 _attackLocalDirection;
 
-    public bool IsStunned { get => _isStunned; }
+    public abstract bool IsStunned { get; set; }
 
-    [SerializeField] private bool _isStunned;
+    //[SerializeField] private bool _isStunned;
 
-    public float StunDuration { get => _stunDuration; }
+    public abstract float StunDuration { get; set; }
 
-    [SerializeField] private float _stunDuration;
+    //[SerializeField] private float _stunDuration;
 
-    [SerializeField] private NodeSO Root, CurrentState;
+    //[SerializeField] private NodeSO Root, CurrentState;
 
-    public NodeSO _root { get =>  _root; }
-    public NodeSO _currentState { get => _currentState; }
+    //public abstract NodeSO _root { get; set; }
+    //public abstract NodeSO _currentState { get; set; }
 
-    [HideInInspector] public NavMeshAgent agent;
-    public Transform target;
+    ////[HideInInspector] public NavMeshAgent agent;
+    //public abstract Transform target { get; set; }
+
+    public abstract float VisionDistance { get; set; }
+
+    //[SerializeField] private float _visionDistance;
 
 
 
 
+    public abstract void Parry();
 
+    public abstract void OpenParryWindo();
 
-    public void Parry()
-    {
-        Debug.Log("attack gets parried");
-    }
+    public abstract void CloseParryWindow();
 
-    public void OpenParryWindo()
-    {
-        Debug.Log("parry window opened");
-    }
+    public abstract void Pull();
 
-    public void CloseParryWindow()
-    {
-        Debug.Log("parry window closed");
-    }
+    public abstract void Stun();
 
-    public void Pull()
-    {
-        Debug.Log("Pulled");
-    }
-
-    public void Stun()
-    {
-        Debug.Log("stunned");
-    }
-
-    public void ClearStun()
-    {
-        Debug.Log("stun cleared");
-    }
+    public abstract void ClearStun();
 }

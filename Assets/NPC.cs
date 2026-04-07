@@ -2,34 +2,23 @@ using UnityEngine;
 
 public abstract class NPC : MonoBehaviour, IHurtable
 {
-    public float Health { get => _health; }
+    public abstract float Health { get; set; }
 
-    [SerializeField] private float _health = 10;
+    //[SerializeField] private float _health;
 
-    public float Damage { get => _damage; }
+    public abstract float Damage { get; set; }
 
-    [SerializeField] private float _damage = 1;
-    public float AttackCooldown { get => _attackCooldown; }
+    //[SerializeField] private float _damage;
+    public abstract float AttackCooldown { get; set; }
 
-    [SerializeField] private float _attackCooldown = 1;
-    public float AttackSpeed{ get => _attackSpeed; }
+    //[SerializeField] private float _attackCooldown = 1;
+    public abstract float AttackSpeed{ get; set; }
 
-    [SerializeField] private float _attackSpeed = 1;
+    //[SerializeField] private float _attackSpeed = 1;
+    public abstract float AttackRange{ get; set; }
 
-
-
-    public void Die()
-    {
-        Debug.Log("Entity Dies");
-    }
-
-    public void TakeDamage(float damage)
-    {
-        Debug.Log("Entity Takes " + damage + " damage");
-
-    }
-    public void Attack()
-    {
-       Debug.Log("Entity Attacks with " + _damage + " damage");
-    }
+    //[SerializeField] private float _attackRange = 2;
+    public abstract void Die();
+    public abstract void TakeDamage(float damage);
+    public abstract void Attack();
 }
