@@ -18,7 +18,7 @@ public class meleeEnemy : SimpleEnemy
 
     [SerializeField] private LayerMask companionLayer;
 
-    [SerializeField] private NPC Target;
+    [SerializeField] private GameObject Target;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class meleeEnemy : SimpleEnemy
     public void ChooseState()
     {
         if (Health <= 0) Die();
-        if (IsStunned) Stun();
+        else if (IsStunned) Stun();
         else if(Target != null && !IsStunned)
         {
             float distance = Vector3.Distance(Target.transform.position, this.transform.position);
@@ -50,17 +50,16 @@ public class meleeEnemy : SimpleEnemy
         
     }
 
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.gameObject.layer == playerLayer || other.transform.gameObject.layer == companionLayer)
+        if((other.transform.gameObject.layer == playerLayer || other.transform.gameObject.layer == companionLayer) && Target == null)
         {
-
+            Target = other.transform.gameObject;
         }
     }
 
 
-    public override void Attack(IHurtable Target)
+    public override void Attack(GameObject Target)
     {
     }
 
@@ -95,7 +94,7 @@ public class meleeEnemy : SimpleEnemy
     public override void TakeDamage(float damage)
     {
     }
-    public override void Chase(NPC Target)
+    public override void Chase(GameObject Target)
     {
     }
 }
