@@ -43,4 +43,5 @@ public abstract class SimpleEnemy : NPC, IParryable, IPullable, IStunnable
     public abstract void Stun();
 
     public abstract void ClearStun();
+    public abstract void Chase(NPC Target);
 }
